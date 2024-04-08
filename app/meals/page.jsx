@@ -2,7 +2,11 @@ import React from "react";
 import classes from "./page.module.css";
 import MealGrid from "@/components/meals/meal-grid";
 import Link from "next/link";
-function Meals() {
+import { getMeal } from "@/lib/meals";
+import { dummyMeals } from "@/initdb";
+async function Meals() {
+  const meals = await getMeal();
+  console.log("meals", meals);
   return (
     <>
       <header className={classes.header}>
@@ -14,11 +18,11 @@ function Meals() {
           Choose your favroite receipe and cook it yourself, it is easy to do.
         </p>
         <p className={classes.cta}>
-          <Link href="/maeals/share">Share your favrt meals</Link>
+          <Link href="/meals/share">Share your favrt meals</Link>
         </p>
       </header>
       <main className={classes.main}>
-        <MealGrid meals={[]} />
+        <MealGrid meals={meals} />
       </main>
     </>
   );
