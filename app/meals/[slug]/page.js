@@ -2,11 +2,16 @@ import React from "react";
 import classes from "./page.module.css";
 import Image from "next/image";
 import { getOneMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 const MealDetails = ({ params }) => {
   const { slug } = params;
 
   const meal = getOneMeal(slug);
   console.log("meal", meal);
+
+  if (!meal) {
+    notFound();
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
   return (
