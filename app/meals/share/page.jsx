@@ -1,21 +1,6 @@
 import ImagePicker from "@/components/meals/Image-picker";
 import classes from "./page.module.css";
-
-async function shareMeal(formData) {
-  "use server";
-
-  const meal = {
-    title: formData.get("title"),
-    summary: formData.get("summary"),
-    image:
-      formData.get("image") ??
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_292,h_300/TopPicks/MOChQs",
-    creator: formData.get("name"),
-    instrcutions: formData.get("instrcutions"),
-    creator_email: formData.get("email"),
-  };
-  console.log("meal", meal);
-}
+import { shareMeal } from "@/lib/actions";
 
 export default function ShareMealPage() {
   return (
