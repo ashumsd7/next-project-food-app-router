@@ -1,8 +1,11 @@
+"use client";
 import ImagePicker from "@/components/meals/Image-picker";
 import classes from "./page.module.css";
 import { shareMeal } from "@/lib/actions";
+import { useFormStatus } from "react-dom";
 
 export default function ShareMealPage() {
+  const { pending } = useFormStatus();
   return (
     <>
       <header className={classes.header}>
@@ -42,7 +45,7 @@ export default function ShareMealPage() {
           </p>
           <ImagePicker name="image" label="Your meal photo" />
           <p className={classes.actions}>
-            <button type="submit">Share Meal</button>
+            <button type="submit">{pending ? "Wait" : "Share Meal"}</button>
           </p>
         </form>
       </main>
