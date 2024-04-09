@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["media-assets.swiggy.com"],
+    domains: ["cdn.pixabay.com"],
   },
 };
 
